@@ -600,8 +600,8 @@ $ ->
             @chart.yAxis[0].setExtremes()
 
       setExtremes: ->
-        if @chart?
-          if(@configs.xBounds.min? and @configs.yBounds.min?)
+        if @chart? 
+          if (@configs.xBounds.min? and @configs.yBounds.min? and (@configs.xBounds.max - @configs.xBounds.min > 1e-10) and (@configs.yBounds.max - @configs.yBounds.min > 1e-10))
             @chart.xAxis[0].setExtremes(@configs.xBounds.min,
               @configs.xBounds.max, true)
             @chart.yAxis[0].setExtremes(@configs.yBounds.min,
