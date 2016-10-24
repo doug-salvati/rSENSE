@@ -101,6 +101,10 @@ Rsense::Application.routes.draw do
   post '/contrib_keys/enter' => 'contrib_keys#enter'
   get '/contrib_keys/clear' => 'contrib_keys#clear'
 
+  resources :tags, only: [:create, :destroy]
+  post '/tags/enter' => 'tags#enter'
+  get '/tags/clear' => 'tags#clear'
+
   get '/api/v1/docs' => 'home#api_v1'
   get '/api/formulas_help' => 'home#formulas_help'
 

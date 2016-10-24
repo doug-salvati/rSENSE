@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922171344) do
+ActiveRecord::Schema.define(version: 20161021155804) do
 
   create_table "contrib_keys", force: true do |t|
     t.string   "name",       null: false
@@ -113,6 +113,13 @@ ActiveRecord::Schema.define(version: 20160922171344) do
     t.integer  "precision",                     default: 4
     t.text     "globals"
     t.text     "kml_metadata"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tutorials", force: true do |t|

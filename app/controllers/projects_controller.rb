@@ -94,6 +94,9 @@ class ProjectsController < ApplicationController
 
     @new_contrib_key = ContribKey.new
     @new_contrib_key.project_id = @project.id
+
+    @new_tag = Tag.new
+    @new_tag.project_id = @project.id
   end
 
   # POST /projects

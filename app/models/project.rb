@@ -21,6 +21,7 @@ class Project < ActiveRecord::Base
   has_many :likes
   has_many :visualizations
   has_many :contrib_keys
+  has_many :tags
 
   has_one :view_count
 
