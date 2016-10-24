@@ -8,7 +8,7 @@ belongs_to :project
   validates :name, length: {
     minimum: 1,
     too_short:  ' (Name\'s Label) is too short (Minimum is one character)',
-    maximum: 10
+    maximum: 20
   }
 
   validates_uniqueness_of :name, scope: :project, case_sensitive: false
