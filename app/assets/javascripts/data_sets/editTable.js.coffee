@@ -9,7 +9,6 @@ uploadSettings =
     $('.edit_table_save').text 'Save'
     errors = JSON.parse jqXHR.responseText
     if uploadSettings.pageName == 'entry'
-      console.log(errors)
       showError errors.error
     else
       showError 'An unknown error has occured'
