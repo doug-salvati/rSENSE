@@ -105,10 +105,14 @@ $ ->
 
         self = this
 
+        # Panning has limited use because Highcharts thinks the graph contains only what is shown
+        # We do it this way for efficiency reasons, so it's better we keep panning disabled on live'
         $.extend true, @chartOptions,
           chart:
             type: if @configs.mode is @LINES_MODE then "line" else "scatter"
             zoomType: "xy"
+            panning: true
+            panKey: 'shift'
             resetZoomButton:
               theme:
                 display: "none"
@@ -179,6 +183,8 @@ $ ->
 
           xAxis: [{
             alignTicks: false
+            startOnTick: false
+            endOnTick: false
             type: 'linear'
             gridLineWidth: 1
             minorTickInterval: 'auto'
