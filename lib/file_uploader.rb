@@ -77,10 +77,14 @@ class FileUploader
   ### Simply opens the file as the correct type and returns the Roo object.
   def open_spreadsheet(file)
     if file.class == ActionDispatch::Http::UploadedFile
-      case File.extname(file.original_filename)
+      fext = File.extname(file.original_filename)
+      case fext
       when '.csv', '.txt', '.text' then convert(file.path)
       when '.xls', '.xlsx', '.ods'
-        system "libreoffice --calc --headless --nologo --invisible --convert-to csv #{file.path} --outdir /tmp/rsense > /dev/null 2>&1"
+        cmd = fext.tr('.','') + "2csv"
+        system "mv #{file.path} #{file.path}" + fext
+        system cmd + " #{file.path}" + fext + " #{file.path}.csv > /dev/null 2>&1"
+        system "mv #{file.path}.csv /tmp/rsense"
         @converted_csv = "/tmp/rsense/#{file.path.gsub('/tmp/', '')}.csv"
         convert(@converted_csv)
       when '.gpx' then GpxParser.new.convert(file.path)
